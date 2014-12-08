@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="<x:host/>">
+        <title><x:siteTitle/> :: <x:articleTitle/></title>
+        <link rel="stylesheet" href="assets/style/reset.css">
+        <link rel="stylesheet" href="assets/style/main.css">
+        <link rel="stylesheet" href="assets/style/medium.editor.css">
+        <link rel="author" href="humans.txt">
+    </head>
+    <body>		
+        <div class="container">
+
+            <div id="moremenu">+
+                <div id="topmenu">
+                    <a href="<x:host/>">Home</a>
+                    <a href="<x:host/>sobre">About Us</a>
+                    <a href="<x:host/>usuario">Editor</a>
+                    <a href="#" class="selected">Articles</a>
+                </div>
+            </div>
+
+            <div class="artigo editable" contentEditable="true">
+                <h1><x:articleTitle/></h1>
+                <div id="sobremateria">&copy;QPosts - Quickly Posts Web Service<span> publicated by <a href="<x:host/>user/345"><x:authorName/></a> in <x:articleDate/></span></div>
+                <x::module name="banner" class="banner"/>
+                <x:articleContent/>
+                <x::module name="Article" action="getTitle"/>
+            </div>
+            
+            <x::list var="articleTags" class="tags"/>
+            
+            <div class="footer">&copy;QPosts - Quickly Posts Web Service - Todos os direitos reservados | <a href="maito:<x:authorEmail/>"><x:authorEmail/></a> | <a href="#top">top</a></div>
+
+        </div>
+        <script src="assets/js/main.js"></script>
+        <!--<script src="assets/js/medium.editor.js"></script>
+        <script>var editor = new MediumEditor('.editable');</script> -->
+    </body>
+</html>

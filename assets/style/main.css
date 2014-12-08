@@ -1,0 +1,66 @@
+
+body {}
+*{padding: 0; margin:0; font-family: Oxygen, Arial, sans-serif; 
+  font-size: 15px; transition: .5s;}
+
+h1, h2, h3, h4 {font-weight: normal; clear: both; color: #234}
+h1 {font-size: 3.5em}
+h2 {font-size: 2.5em}
+h3 {font-size: 2em}
+h4 {font-size: 1.5em}
+p {margin:15px 0}
+hr {clear: both;}
+img {float: left; clear: both; margin:0 20px 10px 0; min-width: 40%; max-width: 100%; box-shadow: 3px 3px 6px #666;}
+img:nth-child(even), img.even {float: right; margin: 0 0 10px 20px;}
+blockquote {font-family: monospace; font-size: 1.3em; color:#039;}
+
+#topmenu { position:fixed; left:0; top:-50px; right: 0; padding: 0; opacity: 0;}
+#topmenu *{display:inline-block; font-size: 14px;}
+#topmenu h1 {color:#FFF; margin: 10px 6px;}
+#topmenu a {text-decoration: none; color:#000; background: #DDD;
+            box-shadow: -5px 0 30px #444; padding:20px; border:1px solid #999; border-left: none; border-right: none;}
+#topmenu a:hover {color:#FFF; background: #246;}
+#topmenu a.selected {color:#FFF; background: #567; font-weight: bold;}
+
+
+#moremenu {position: fixed; left: -4px; top:-4px; padding: 0 15px;
+           background:#375; color:#FFF; font-size: 32px; 
+           border-bottom-right-radius: 50%; opacity: .5;}
+#moremenu:hover {opacity: 1;}
+#moremenu:hover > #topmenu { opacity: 1; top:-1px; transition: opacity,top .5s;}
+
+#sobremateria {color:#000; margin:-20px 0 10px 0; font-size: 11px;}
+#sobremateria span{float:right; text-align: right;}
+
+.container {max-width: 900px; min-width: 300px; padding: 0 3%;}
+.artigo {padding: 20px 0;}
+
+/* DELETEME BEGIN */
+.banner {border:2px double #999; padding: 30px 10px; margin:10px 0; background: #F4F4F4;}
+
+
+/* DELETEME END */
+
+.tags {clear:both; text-align: right;}
+.tags li { display:inline-block; padding: 0 9px; margin: 2px 2px 0 0; border:1px solid #DDD; 
+           border-radius:40px; font-style: italic; font-size:.8em; 
+            background-image: linear-gradient(to top, #DDD, #FFF, #EEE); cursor:pointer; color:#999;}
+.tags li:hover {color:#000; box-shadow: 0 1px 4px #999;}
+
+.footer {clear:both; border-top: 1px solid #999; padding: 10px 0; font-size: 13px; color: #678; text-align: right;}
+
+@media only screen and (max-width: 580px) {
+	body{background: #000;}
+	*{color:#777;}
+	img {width: 100%; box-shadow: none;}
+        #topmenu a{padding: 14px;}
+        #moremenu { color: #000; background: #999;}
+	.container {padding-top: 10px;}
+        #sobremateria {color:#999; margin: 3px 0;}
+        #sobremateria span {float: left;}
+        h1, h2, h3, h4 {color:#789;}
+	h1 {font-size: 2.3em;}
+	h2 {font-size: 1.8em;}
+	h3 {font-size: 1.6em;}
+	h4 {font-size: 1.3em;}
+}

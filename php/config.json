@@ -1,0 +1,30 @@
+{
+    "name": "Zumbi PostMaster",
+    "version": "0.0.1",
+    "sigla": "Zumbi",
+    "cli":{
+        "commands":{
+            "h": {"name": "help", "value":false},
+            "q": {"name": "quiet", "value": false},
+            "m": {"name": "mkphar", "value": true}
+        }
+    },
+    "database": {
+        "default": "mysql",
+        "mysql": {
+            "dsn": "mysql:host=localhost;dbname=zumbi;charset=UTF8",
+            "user": "zumbi",
+            "passw": "admin123@#zumbi"
+        },
+        "books": {
+            "dsn": "sqlite:php/books.db"
+        },
+        "users": {
+            "dsn": "sqlite:php/users.db"
+        },
+        "docs": {
+            "dsn": "sqlite:php/docs.db"
+        }
+    }
+    
+}
