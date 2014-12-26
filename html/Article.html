@@ -1,0 +1,85 @@
+<x::html file="static/header" cached="true"/>
+
+<!-- BEGIN Contents -->
+        <div class="container">
+
+            <div id="moremenu">+
+                <div id="topmenu">
+                    <a href="<x:host/>" id="renderize">Home</a>
+                    <a href="<x:host/>sobre">About Us</a>
+                    <a href="<x:host/>usuario">Editor</a>
+                    <a href="#" class="selected">Articles</a>
+                </div>
+            </div>
+
+            <div class="artigo editable" contentEditable="true">
+                <h1><x:articleTitle/></h1>
+                <div id="sobremateria">&copy;QPosts - Quick Posts Web Service<span> publicated by <a href="<x:host/>user/345"><x:authorName/></a> in <x:articleDate/></span></div>
+                <x::module name="banner" class="banner"/>
+                <x:articleContent/>
+                <x::module name="Article" action="getTitle"/>
+            </div>
+
+            <x::list var="articleTags" class="tags"/>
+
+            <div class="footer">&copy;QPosts - Quick Posts Web Service - Todos os direitos reservados | <a href="maito:<x:authorEmail/>"><x:authorEmail/></a> | <a href="#top">top</a></div>
+
+        </div>
+<!-- END Contents -->
+
+<!-- BEGIN JavaScript Inserts -->
+        <div id="jsedit_tab">
+            <button id="jsedit_tab_inf" title="Mostrar informações sobre a imagem."></button>
+            <button id="jsedit_tab_lnk" title="Inserir ou remover um hiperlink na imagem."></button>
+            <button id="jsedit_tab_dim" title="Redimenciona a imagem (tamanho & posição)"></button>
+            <button id="jsedit_tab_x" title="Remover esta imagem da postagem."></button>
+            <button id="jsedit_tab_ok" title="Fechar a edição."></button>
+            <button id="jsedit_tab_dw" title="Salvar a edição."></button>
+        </div>
+
+        <div id="jsedit_image_dim" class="jsedit_image">
+            <button class="jsedit_close">X</button>
+            <p style="clear:both"></p>
+            <button id="jsedit_width_1"></button>
+            <button id="jsedit_width_2"></button>
+            <button id="jsedit_width_3"></button>
+            <p style="clear:both"></p>
+            <button id="jsedit_align_left"></button>
+            <button id="jsedit_align_right"></button>
+        </div>
+
+        <div id="jsedit_form_link" class="jsedit_image">
+            <button class="jsedit_close">X</button>
+            <label>HiperLink:</label>
+            <input type="link" id="jsedit_link" title="Link para outro conteúdo" placeholder="ex.: http://site.com"/>
+            <!-- <label>Alvo do link</label>
+            <select id="jsedit_link_target">
+                <option value="new">Nova janela/guia</option>
+                <option value="self">Nesta mesma janela</option>
+            </select> -->
+        </div>
+
+        <div id="jsedit_image_inf" class="jsedit_image">
+            <button class="jsedit_close">X</button>
+            <label>Url da imagem:</label>
+            <input type="text" id="jsedit_image_inf_src"/>
+
+            <label>Titulo da imagem:</label>
+            <input type="text" id="jsedit_image_inf_title"/>
+
+            <label>Texto alternativo</label>
+            <input type="text" id="jsedit_image_inf_alt"/>
+        </div>
+
+        <div id="jsedit_image_modal" class="jsedit_image">
+            <button class="jsedit_close">X</button>
+            <button id="jsedit_image_delete">Apagar definitivamente esta imagem?</button>
+        </div>
+
+
+        <form id="jsedit_form_save" method="post">
+            <textarea name="artigo" id="jsedit_content_save"></textarea>
+        </form>
+<!-- END JavaScript Inserts -->
+
+<x::html file="static/footer" cached="false"/>

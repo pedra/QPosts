@@ -1,0 +1,32 @@
+{
+    "name": "Quick Post",
+    "version": "0.0.1",
+    "sigla": "QPost",
+    "timezone": "America/Sao_Paulo",
+    "cli":{
+        "commands":{
+            "h": {"name": "help", "value":false},
+            "q": {"name": "quiet", "value": false},
+            "m": {"name": "make", "value": true},
+            "d": {"name": "show", "value": true}
+        }
+    },
+    "database": {
+        "default": "mysql",
+        "mysql": {
+            "dsn": "mysql:host=localhost;dbname=zumbi;charset=UTF8",
+            "user": "zumbi",
+            "passw": "admin123@#zumbi"
+        },
+        "books": {
+            "dsn": "sqlite:php/books.db"
+        },
+        "users": {
+            "dsn": "sqlite:php/users.db"
+        },
+        "docs": {
+            "dsn": "sqlite:php/docs.db"
+        }
+    }
+
+}

@@ -1,0 +1,73 @@
+<?php
+
+/* Environment Constants
+ * TODO: translation to the English
+ *
+ * ROOT:    diretório base do site/app;
+ * RPHAR:   diretório base do arquivo PHAR;
+ * SMODE:   modo de acesso [cli, cliserver]
+ * CACHE:   diretório de cache (deve ter permissão 0777);
+ * URL:     endereço base de acesso http(s) do site;
+ * REQST:   tudo o que é digitado depois da URL;
+ *
+ * @author http://google.com/+BillRocha
+ */
+
+//Default encoder
+mb_internal_encoding('UTF-8');
+
+//TimeZone
+date_default_timezone_set('America/Sao_Paulo');
+
+//Global core functions
+include 'Helper/functions.php';
+
+//ShuntDown
+register_shutdown_function('shutdown');
+
+//Solve Paths [ROOT, RPHAR, SMODE & CACHE]
+solvePaths(dirname(__DIR__));
+
+//define URL & REQST
+solveUrl();
+
+//_autoloadPhar('\\Lib\\Html\\Doc');
+//exit();
+
+//...for cli mode
+if (isset($argv)) $_REQUEST['cli'] = $argv;
+
+//Download resources in phar mode
+if (REQST != '') download(REQST);
+
+//AUTOLOAD
+set_include_path(ROOT.PATH_SEPARATOR.get_include_path());
+spl_autoload_register(function($class) {
+    $class = 'php/' . str_replace('\\', '/', trim($class, '\\')) . '.php';
+    return (($file = _file_exists($class)) !== false ? require_once $file : false);
+});
+
+//Composer autoloader [optional]
+//include PHP.'vendor/autoload.PHP';
+
+//Alias from DOCK
+class_alias('Lib\Dock', 'Dock');
+
+//Parking ERROR Class
+Dock::park('Lib\Debug\XError','XError');
+
+//Error/Exception call back
+error_reporting(E_ALL | E_STRICT);
+set_error_handler(array(Dock::XError(),'Error'));
+set_exception_handler(array(Dock::XError(),'Exception'));
+//set_error_handler('Lib\Debug\EException::Error');
+//set_exception_handler('Lib\Debug\EException::Exception');
+
+//Start Session for default
+session_start();
+
+//Parking system global objects
+Dock::park('Lib\Data\Config', 'Config', _file_exists('php/config.json'));
+Dock::park('Lib\Request', 'App');
+
+// --------------------------- END :(
